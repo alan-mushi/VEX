@@ -145,6 +145,63 @@ void deriche_slow(int width, int height) {
 	b2 = (int) (256 * (-0.606531));
 	c1 = c2 = (int) (256);
 
-	//...
+L1:
+	for (i = 0; i < width; i++) {
+		ym1 = 0, ym2 = 0, xm1 = 0;
+		for (j = 0; j < height; j++) {
+			qy1[i][j] = (a1 * (in[i][j] << 8) + a2 * xm1 + b1 * ym1 + b2 * ym2) >> 8;
+			xm1 = in[i][j] << 8;
+			ym2 = ym1;
+			ym1 = qy1[i][j];
+		}
+	}
 
+L2:
+	for (i = 0; i < width; i++) {
+		yp1 = 0, yp2 = 0, xp1 = 0, xp2 = 0;
+		for (j = height - 1; j >= 0; j--) {
+			qy2[i][j] = (a3 * xp1 + a1 * xp2 + b1 * yp1 + b2 * yp2) >> 8;
+			xp2 = xp1;
+			xp1 = in[i][j] << 8;
+			yp2 = yp1;
+			yp1 = qy2[i][j];
+		}
+	}
+
+L3:
+	for (i = 0; i < width; i++)
+		for (j = 0; j < height; j++)
+			qt[i][j] = (c1 * (qy1[i][j] + qy2[i][j])) >> 8;
+L4:
+	for (j = 0; j < height; j++) {
+		tm1 = 0, ym1 = 0, ym2 = 0;
+		for (i = 0; i < width; i++) {
+			qy1[i][j] = (a5 * qt[i][j] + a6 * tm1 + b1 * ym1 + b2 * ym2) >> 8;
+			tm1 = qt[i][j];
+			ym2 = ym1;
+			ym1 = qy1[i][j];
+		}
+	}
+L5:
+	for (j = 0; j < height; j++) {
+		tp1 = 0, tp2 = 0, yp1 = 0, yp2 = 0;
+		for (i = width - 1; i >= 0; i--) {
+			qy2[i][j] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 8;
+			tp2 = tp1;
+			tp1 = qt[i][j];
+			yp2 = yp1;
+			yp1 = qy2[i][j];
+		}
+	}
+L6:
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
+			out[i][j] = (c2 * (qy1[i][j] + qy2[i][j])) >> 16;
+			if (out[i][j] > 25) {
+				out[i][j] = 0;
+			} else {
+				out[i][j] = 255;
+			}
+		}
+	}
 }

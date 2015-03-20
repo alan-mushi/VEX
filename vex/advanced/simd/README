@@ -1,0 +1,15 @@
+This contains the implementation ond API of SIMD custom instructions for VEX. It consists of the following files:
+   -vex_simd.c: implementation of vex simd custom instructions
+   -vex_simd.h: API (use only what's defined in the PUBLIC section)
+   -makefile: compile and install vex_simd
+
+You first need to:
+   1- copy this folder into VEX main directory or specify the path of vexasm
+   2- 'make' : this will compile vex_simd as a shared object and generate the shared library 'libvexsimd.so'
+   3- 'make install' : this will copy the library 'libvexsimd.so' to the VEX library folder and 'vex_simd.h' to VEX include folder.
+YOU FIRST HAVE TO SPECIFY THE VEX INSTALL DIRECTORY THOUGHT THE VARIABLE 'VEX_DIR'
+
+Once installed, you can use simd_vex custom instructions by including 'vex_simd.h' like so:
+   #include <vex_simd.h>
+You also need to link with libvexsimd.so when compiling, e.g:
+   <vex_dir>/bin/cc file_using_vex_simd.c -lvexsimd

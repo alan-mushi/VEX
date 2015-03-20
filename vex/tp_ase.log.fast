@@ -1,0 +1,129 @@
+Total Cycles:                           261233445 (1306.17 msec)
+Execution Cycles:                       124142575 ( 47.52%)
+Stall Cycles:                           137090870 ( 52.48%)
+Nops:                                     4766942 (  1.82%)
+Executed operations:                    152687189
+
+Executed branches:                       21053838 ( 13.79% ops)(16.96% insts)
+Not taken branches:                      11294242 (  7.40% ops)( 9.10% insts)(53.64% br)
+Taken branches:                           9759596 (  6.39% ops)( 7.86% insts)(46.36% br)
+  Taken uncond branches:                  6848113 (  4.49% ops)( 5.52% insts)(32.53% br)
+  Taken cond branches:                    2911483 (  1.91% ops)( 2.35% insts)(13.83% br)
+Size of Loaded Code:                         6784 Bytes
+
+Instruction Memory Operations:
+  Accesses:                             124930063
+    Hits (Hit Rate):                    124930031 (100.00%)
+    Misses (Miss Rate):                        32 (  0.00%)
+Instruction Memory Stall Cycles
+  Total (in cycles):                     33263294 (100.00%)
+    Due to Misses:                            640 (  0.00%)
+    Due to Bus Conflicts:                33262654 (100.00%)
+
+Data Memory Operations:                     Cache          
+  Accesses:                              23640159 (100.00%)
+    Hits (Hit Rate):                     20902017 ( 88.42%)
+    Misses (Miss Rate):                   2738142 ( 11.58%)
+  Write Backs (% of Misses):              2184891 ( 79.79%)
+Data Memory Stall Cycles
+  Total (in cycles):                     98818353 (100.00%)
+    Due to Misses:                       98573112 ( 99.75%)
+    Due to Bus Conflicts:                  245241 (  0.25%)
+
+Percentage Bus Bandwidth Consumed:          42.75%
+
+
+Avg. IPC (no stalls):   1.23
+Avg. IPC (with stalls): 0.58
+
+  cycle counter =    124142575
+  total ops     =    152687189
+   width[ 0] =         3180
+   width[ 1] =    152592382
+   width[ 2] =        33761
+   width[ 3] =         8463
+   width[ 4] =          474
+
+Flat profile (cycles)
+       Total   Total%        Insts   Insts%       Dcache  Dcache%       Icache  Icache% Function
+           0     0.00            0     0.00            0     0.00            0     0.00 (null)
+           0     0.00            0     0.00            0     0.00           -0    -0.00 fprintf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 vfprintf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _vfprintf_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 localeconv
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _localeconv_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sinit
+           0     0.00            0     0.00            0     0.00           -0    -0.00 std
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __swsetup
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __smakebuf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sbprintf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 mbtowc
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __wrap_strlen
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sprint
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sfvwrite
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __wrap_memmove
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _bcopy
+           0     0.00            0     0.00            0     0.00           -0    -0.00 fflush
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __swrite
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _write_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __wrap_strcmp
+           0     0.00            0     0.00            0     0.00           -0    -0.00 fopen
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _fopen_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sflags
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sfp
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sfmoreglue
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _malloc_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _morecore_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _sbrk_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __wrap_memset
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _open_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 fscanf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __svfscanf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __srefill
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _fstat_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sread
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _read_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 printf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __wrap_memchr
+           0     0.00            0     0.00            0     0.00           -0    -0.00 sscanf
+           0     0.00            0     0.00            0     0.00           -0    -0.00 eofread
+           0     0.00            0     0.00            0     0.00           -0    -0.00 strtoul
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _strtoul_r
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _i_udiv
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _i_urem
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __srget
+           0     0.00            0     0.00            0     0.00           -0    -0.00 fclose
+           0     0.00            0     0.00            0     0.00           -0    -0.00 __sclose
+           0     0.00            0     0.00            0     0.00           -0    -0.00 _close_r
+   261233445      98573112           640  (others not profiled)
+
+Simulation time  =    11.0200 s
+Simulation speed =    13.8555 MOPS
+
+
+ta_init using <run_dir>/vex.cfg
+
+	CoreCkFreq           200
+	BusCkFreq            200
+	lg2CacheSize         18	# (CacheSize            = 262144)
+	lg2Sets              7	# (Sets                 = 128)
+	lg2LineSize          4	# (LineSize             = 16)
+	MissPenalty          36
+	WBPenalty            6
+	lg2StrSize           9	# (StrSize              = 512)
+	lg2StrSets           4	# (StrSets              = 16)
+	lg2StrLineSize       5	# (StrLineSize          = 32)
+	StrMissPenalty       36
+	StrWBPenalty         33
+	lg2ICacheSize        15	# (ICacheSize           = 32768)
+	lg2ICacheSets        0	# (ICacheSets           = 1)
+	lg2ICacheLineSize    6	# (ICacheLineSize       = 64)
+	ICachePenalty        20
+	NumCaches            1
+	BranchStall          1
+	StreamEnable         FALSE
+	PrefetchEnable       FALSE
+	LockEnable           FALSE
+	ProfGranularity      AUTO
+
+

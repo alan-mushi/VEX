@@ -1,0 +1,4 @@
+-'simd' folder contains the implementation of custom SIMD instructions for VEX.
+	CHECK 'simd/README' for usage instructions.
+-'test_simd" folder contains an example on how to use the custom SIMD insturctions.
+-'simpleIO' folder contains an example of file copy. It also shows how to configure VEX Machine Model and Cache simulator.

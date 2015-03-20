@@ -1,0 +1,8 @@
+x86/deriche
+x86/obj/
+x86/sobel
+*.o
+*.swp
+.cproject
+.svn
+.project

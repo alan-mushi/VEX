@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>VEX report</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script src="web/mochi/MochiKit.js" type="text/javascript"></script>
+<script src="web/plotkit/excanvas.js" type="text/javascript"></script>
+<script src="web/plotkit/PlotKit_Packed.js" type="text/javascript"></script>
+</head>
+<body>
+<table id="stats" class="data">
+<thead><tr><td></td><td>000</td> <td>001</td> <td>002</td> <td>003</td> </tr></thead>
+<tbody>
+<tr><td>Time</td><td>261.059</td><td>146.736</td><td>146.736</td><td>261.059</td></tr>
+<tr><td>Total</td><td>208847139</td><td>117388703</td><td>117388703</td><td>208847139</td></tr>
+<tr><td>Execution</td><td>11131140</td><td>9094860</td><td>9094860</td><td>11131140</td></tr>
+<tr><td>Stall</td><td>197715999</td><td>108293843</td><td>108293843</td><td>197715999</td></tr>
+<tr><td>Nops</td><td>1787774</td><td>1843126</td><td>1843126</td><td>1787774</td></tr>
+<tr><td>Ops</td><td>21284125</td><td>18361290</td><td>18361290</td><td>21284125</td></tr>
+
+<tr><td>IPCfunc</td><td>1.91</td><td>2.02</td><td>2.02</td><td>1.91</td></tr>
+<tr><td>IPCtot</td><td>0.10</td><td>0.16</td><td>0.16</td><td>0.10</td></tr>
+</tbody>
+</table>
+Time <div id="chart1" style="margin: 0 0 0 0;" width="500" height="200"></div>
+<script type="text/javascript">
+  var data0 = [[0,261.059], [1,146.736], [2,146.736], [3,261.059]];
+  var plotter = EasyPlot("bar", {}, $("chart1"), [data0]);
+</script>
+</div>
+IPCfunc IPCtot <div id="chart2" style="margin: 0 0 0 0;" width="500" height="200"></div>
+<script type="text/javascript">
+  var data0 = [[0,1.91], [1,2.02], [2,2.02], [3,1.91]];
+  var data1 = [[0,0.10], [1,0.16], [2,0.16], [3,0.10]];
+  var plotter = EasyPlot("bar", {}, $("chart2"), [data0,data1]);
+</script>
+</div>
+<p>Run 000</p>
+<table><tr><td>
+<div id="chart3" style="margin: 0 0 0 0;" width="200" height="200"></div>
+<script type="text/javascript">
+  var option = {"xTicks":[{label:"Execution",v:0}, {label:"Stall",v:1}, {label:"Nops",v:2}]};
+  var data = [[0,11131140], [1,197715999], [2,1787774]];
+  var plotter = EasyPlot("pie", option, $("chart3"), [data]);
+</script>
+</div>
+</td><td>
+<div id="chart4" style="margin: auto auto auto auto;" width="200" height="200"></div>
+<script type="text/javascript">
+  var data = [[0,110117], [1,5136879], [2,4177702], [3,1563438], [4,775382]];
+  var plotter = EasyPlot("pie", {}, $("chart4"), [data]);
+</script>
+</div>
+</td></tr></table>
+<p>Run 001</p>
+<table><tr><td>
+<div id="chart5" style="margin: 0 0 0 0;" width="200" height="200"></div>
+<script type="text/javascript">
+  var option = {"xTicks":[{label:"Execution",v:0}, {label:"Stall",v:1}, {label:"Nops",v:2}]};
+  var data = [[0,9094860], [1,108293843], [2,1843126]];
+  var plotter = EasyPlot("pie", option, $("chart5"), [data]);
+</script>
+</div>
+</td><td>
+<div id="chart6" style="margin: auto auto auto auto;" width="200" height="200"></div>
+<script type="text/javascript">
+  var data = [[0,202], [1,3929064], [2,3573519], [3,1396428], [4,773976]];
+  var plotter = EasyPlot("pie", {}, $("chart6"), [data]);
+</script>
+</div>
+</td></tr></table>
+<p>Run 002</p>
+<table><tr><td>
+<div id="chart7" style="margin: 0 0 0 0;" width="200" height="200"></div>
+<script type="text/javascript">
+  var option = {"xTicks":[{label:"Execution",v:0}, {label:"Stall",v:1}, {label:"Nops",v:2}]};
+  var data = [[0,9094860], [1,108293843], [2,1843126]];
+  var plotter = EasyPlot("pie", option, $("chart7"), [data]);
+</script>
+</div>
+</td><td>
+<div id="chart8" style="margin: auto auto auto auto;" width="200" height="200"></div>
+<script type="text/javascript">
+  var data = [[0,202], [1,3929064], [2,3573519], [3,1396428], [4,773976]];
+  var plotter = EasyPlot("pie", {}, $("chart8"), [data]);
+</script>
+</div>
+</td></tr></table>
+<p>Run 003</p>
+<table><tr><td>
+<div id="chart9" style="margin: 0 0 0 0;" width="200" height="200"></div>
+<script type="text/javascript">
+  var option = {"xTicks":[{label:"Execution",v:0}, {label:"Stall",v:1}, {label:"Nops",v:2}]};
+  var data = [[0,11131140], [1,197715999], [2,1787774]];
+  var plotter = EasyPlot("pie", option, $("chart9"), [data]);
+</script>
+</div>
+</td><td>
+<div id="chart10" style="margin: auto auto auto auto;" width="200" height="200"></div>
+<script type="text/javascript">
+  var data = [[0,110117], [1,5136879], [2,4177702], [3,1563438], [4,775382]];
+  var plotter = EasyPlot("pie", {}, $("chart10"), [data]);
+</script>
+</div>
+</td></tr></table>
+</body></html>

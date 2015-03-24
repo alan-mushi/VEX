@@ -12,33 +12,20 @@ all: help
 fast: clean edge_detect 
 	export VEXCFG=$(CACHE_CFG)
 	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm fixed_fast
-	cp ta.log.000 tp_ase.log.fast
-	grep "Total Cycles" tp_ase.log.000
+	\mv ta.log.000 tp_ase.log.fast
+	grep "Total Cycles" tp_ase.log.fast
 
 slow: clean edge_detect 
 	export VEXCFG=$(CACHE_CFG)
 	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm fixed_slow
-	cp ta.log.000 tp_ase.log.slow  
-	grep "Total Cycles" tp_ase.log.001
-		
+	\mv ta.log.000 tp_ase.log.slow
+	grep "Total Cycles" tp_ase.log.slow
+
 float: clean edge_detect 
 	export VEXCFG=$(CACHE_CFG)
 	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm float_slow
-	cp ta.log.000 tp_ase.log.float  
-	grep "Total Cycles" tp_ase.log.001
-
-#objs/deriche.o:  $(SRC)/deriche.c  $(MM_FILE)
-#	$(VEX_DIR)/bin/cc $(CFLAGS) -fmm=$(MM_FILE) -DVEX -c -o $@ $(SRC)/deriche.c 
-#
-#objs/alloc.o:  $(SRC)/alloc.c  $(MM_FILE)
-#	$(VEX_DIR)/bin/cc $(CFLAGS) -fmm=$(MM_FILE) -DVEX -c -o $@ $(SRC)/alloc.c 
-#
-#objs/pgm.o : $(SRC)/pgm.c  $(MM_FILE)
-#	$(VEX_DIR)/bin/cc $(CFLAGS) -fmm=$(MM_FILE) -DVEX -c -o $@ $(SRC)/pgm.c 
-#
-#objs/edge_detect.o:  $(SRC)/edge_detect.c  $(MM_FILE)
-#	$(VEX_DIR)/bin/cc $(CFLAGS) -fmm=$(MM_FILE) -DVEX -c -o $@ $(SRC)/edge_detect.c 
-#
+	\mv ta.log.000 tp_ase.log.float
+	grep "Total Cycles" tp_ase.log.float
 
 edge_detect:  $(SRC)/pgm.c $(SRC)/alloc.c $(SRC)/edge_detect.c $(SRC)/deriche.c   $(MM_FILE)
 	$(VEX_DIR)/bin/cc $(CFLAGS) -fmm=$(MM_FILE) -DVEX -o $@ $(SRC)/pgm.c $(SRC)/alloc.c $(SRC)/edge_detect.c $(SRC)/deriche.c 
@@ -46,7 +33,6 @@ edge_detect:  $(SRC)/pgm.c $(SRC)/alloc.c $(SRC)/edge_detect.c $(SRC)/deriche.c 
 report:
 	$(VEX_DIR)/bin/runreport tp_ase.log.* > report.html
 
-	
 .PHONY: set_cache_cfg clean help
 
 set_cache_cfg:

@@ -62,6 +62,7 @@ unsigned char out[MAX_WIDTH][MAX_HEIGHT];
 extern void deriche_fused(int width, int height);
 extern void deriche_slow(int width, int height);
 extern void deriche_float(int width, int height);
+extern void deriche_array(int width, int height);
 
 int main(int argc, char **argv) {
 
@@ -88,6 +89,8 @@ int main(int argc, char **argv) {
 			mode = 2;
 		} else if (strcmp(argv[3], "fixed_fast")==0) {
 			mode = 3;
+		} else if (strcmp(argv[3], "fixed_array") == 0) {
+			mode = 4;
 		}
 	}
 
@@ -116,6 +119,9 @@ int main(int argc, char **argv) {
 		break;
 	case 3:
 		deriche_fused(width, height);
+		break;
+	case 4:
+		deriche_array(width, height);
 		break;
 	}
 

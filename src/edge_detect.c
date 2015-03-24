@@ -61,12 +61,13 @@ unsigned char out[MAX_WIDTH][MAX_HEIGHT];
 
 extern void deriche_fused(int width, int height);
 extern void deriche_slow(int width, int height);
+extern void deriche_float(int width, int height);
 
 int main(int argc, char **argv) {
 
 	int width, height;
 
-	int t = 0;
+	//int t = 0;
 	int mode = 0;
 
 #ifdef VEX

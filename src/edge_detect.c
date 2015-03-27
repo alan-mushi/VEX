@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
 #ifdef VEX
 	sim_ta_disable();
 #endif
-	fprintf(stderr, "usage: %s in.pgm out.pgm mode={float_slow,fixed_slow,fixed_fast}\n", argv[0]);
+	fprintf(stderr, "usage: %s in.pgm out.pgm mode={float_slow,fixed_slow,fixed_fast,fixed_array}\n", argv[0]);
 
 	if (argc < 3) {
 		fprintf(stderr, "usage: %s in.pgm out.pgm mode", argv[0]);

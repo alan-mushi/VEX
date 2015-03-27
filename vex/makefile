@@ -9,17 +9,23 @@ SRC=../src/
 all: help  
 # $(SRC)/pgm.c $(SRC)/edge_detect.c$(SRC)/alloc.c
 
-fast: clean edge_detect 
+fused: clean edge_detect 
 	export VEXCFG=$(CACHE_CFG)
 	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm fixed_fast
-	\mv ta.log.000 tp_ase.log.fast
-	grep "Total Cycles" tp_ase.log.fast
+	\mv ta.log.000 tp_ase.log.fused
+	grep "Total Cycles" tp_ase.log.fused
 
-slow: clean edge_detect 
+slow: clean edge_detect
 	export VEXCFG=$(CACHE_CFG)
 	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm fixed_slow
 	\mv ta.log.000 tp_ase.log.slow
 	grep "Total Cycles" tp_ase.log.slow
+
+array: clean edge_detect
+	export VEXCFG=$(CACHE_CFG)
+	./edge_detect ../data/satellite.pgm ./deriche-satellite.pgm fixed_array
+	\mv ta.log.000 tp_ase.log.array
+	grep "Total Cycles" tp_ase.log.array
 
 float: clean edge_detect 
 	export VEXCFG=$(CACHE_CFG)

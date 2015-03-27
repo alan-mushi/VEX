@@ -260,8 +260,11 @@ L6:
 	}
 }
 
-int qy1a[MAX_HEIGHT];
-int qy2a[MAX_HEIGHT];
+// qyX: a -> array, v -> vertical, h -> horizontal
+int qy1av[MAX_HEIGHT];
+int qy2av[MAX_HEIGHT];
+int qy1ah[MAX_WIDTH];
+int qy2ah[MAX_WIDTH];
 
 void deriche_array(int width, int height) {
 	int i, j;
@@ -288,45 +291,47 @@ L1_2_3:
 		yp1 = 0, yp2 = 0, xp1 = 0, xp2 = 0;
 
 		for (j = 0; j < height; j++) {
-			qy1a[j] = (a1 * (in[i][j] << 8) + a2 * xm1 + b1 * ym1 + b2 * ym2) >> 8;
+			qy1av[j] = (a1 * (in[i][j] << 8) + a2 * xm1 + b1 * ym1 + b2 * ym2) >> 8;
 			xm1 = in[i][j] << 8;
 			ym2 = ym1;
-			ym1 = qy1a[j];
+			ym1 = qy1av[j];
 
-			qy2a[height - j - 1] = (a3 * xp1 + a1 * xp2 + b1 * yp1 + b2 * yp2) >> 8;
+			qy2av[height - j - 1] = (a3 * xp1 + a1 * xp2 + b1 * yp1 + b2 * yp2) >> 8;
 			xp2 = xp1;
 			xp1 = in[i][height - j - 1] << 8;
 			yp2 = yp1;
-			yp1 = qy2a[height - j - 1];
+			yp1 = qy2av[height - j - 1];
 
 		}
 
 		for (j = 0; j < height; j++)
-			qt[i][j] = (c1 * (qy1a[j] + qy2a[j])) >> 8;
+			qt[i][j] = (c1 * (qy1av[j] + qy2av[j])) >> 8;
 	}
 L4_5_6:
 	for (j = 0; j < height; j++) {
 		tm1 = 0, ym1 = 0, ym2 = 0;
+		tp1 = 0, tp2 = 0, yp1 = 0, yp2 = 0;
+
 		for (i = 0; i < width; i++) {
-			qy1[i][j] = (a5 * qt[i][j] + a6 * tm1 + b1 * ym1 + b2 * ym2) >> 8;
+			qy1ah[i] = (a5 * qt[i][j] + a6 * tm1 + b1 * ym1 + b2 * ym2) >> 8;
 			tm1 = qt[i][j];
 			ym2 = ym1;
-			ym1 = qy1[i][j];
+			ym1 = qy1ah[i];
 
-			qy2[width - i - 1][j] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 8;
+			qy2ah[width - i - 1] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 8;
 			tp2 = tp1;
 			tp1 = qt[width - i - 1][j];
 			yp2 = yp1;
-			yp1 = qy2[width - i - 1][j];
+			yp1 = qy2ah[width - i - 1];
 		}
 
-		for (j = 0; j < height; j++) {
-			out[i][j] = (c2 * (qy1[i][j] + qy2[i][j])) >> 16;
-			if (out[i][j] > 25) {
+		for (i = 0; i < height; i++) {
+			out[i][j] = (c2 * (qy1ah[i] + qy2ah[i])) >> 16;
+
+			if (out[i][j] > 25)
 				out[i][j] = 0;
-			} else {
+			else
 				out[i][j] = 255;
-			}
 		}
 	}
 }

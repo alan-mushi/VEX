@@ -304,8 +304,7 @@ L1_2_3:
 		for (j = 0; j < height; j++)
 			qt[i][j] = (c1 * (qy1a[j] + qy2a[j])) >> 8;
 	}
-
-L4:
+L4_5_6:
 	for (j = 0; j < height; j++) {
 		tm1 = 0, ym1 = 0, ym2 = 0;
 		for (i = 0; i < width; i++) {
@@ -313,21 +312,14 @@ L4:
 			tm1 = qt[i][j];
 			ym2 = ym1;
 			ym1 = qy1[i][j];
-		}
-	}
-L5:
-	for (j = 0; j < height; j++) {
-		tp1 = 0, tp2 = 0, yp1 = 0, yp2 = 0;
-		for (i = width - 1; i >= 0; i--) {
-			qy2[i][j] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 8;
+
+			qy2[width - i - 1][j] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 8;
 			tp2 = tp1;
-			tp1 = qt[i][j];
+			tp1 = qt[width - i - 1][j];
 			yp2 = yp1;
-			yp1 = qy2[i][j];
+			yp1 = qy2[width - i - 1][j];
 		}
-	}
-L6:
-	for (i = 0; i < width; i++) {
+
 		for (j = 0; j < height; j++) {
 			out[i][j] = (c2 * (qy1[i][j] + qy2[i][j])) >> 16;
 			if (out[i][j] > 25) {

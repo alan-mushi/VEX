@@ -31,7 +31,9 @@ obj/alloc.o : $(SRCDIR)alloc.c $(INCS)
 run: $(PROG)
 	#./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm float_slow
 	#./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm fixed_slow
-	./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm fixed_fast
+	#./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm fixed_fast
+	#./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm fixed_array
+	./$(PROG) ../data/satellite.pgm ./deriche-satellite.pgm fixed_short
 	
 clean:
 	rm obj/* $(PROG)

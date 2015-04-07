@@ -63,6 +63,7 @@ extern void deriche_fused(int width, int height);
 extern void deriche_slow(int width, int height);
 extern void deriche_float(int width, int height);
 extern void deriche_array(int width, int height);
+extern void deriche_short(int width, int height);
 
 int main(int argc, char **argv) {
 
@@ -74,7 +75,7 @@ int main(int argc, char **argv) {
 #ifdef VEX
 	sim_ta_disable();
 #endif
-	fprintf(stderr, "usage: %s in.pgm out.pgm mode={float_slow,fixed_slow,fixed_fast,fixed_array}\n", argv[0]);
+	fprintf(stderr, "usage: %s in.pgm out.pgm mode={float_slow,fixed_slow,fixed_fast,fixed_array,fixed_short}\n", argv[0]);
 
 	if (argc < 3) {
 		fprintf(stderr, "usage: %s in.pgm out.pgm mode", argv[0]);
@@ -91,6 +92,8 @@ int main(int argc, char **argv) {
 			mode = 3;
 		} else if (strcmp(argv[3], "fixed_array") == 0) {
 			mode = 4;
+		} else if (strcmp(argv[3], "fixed_short") == 0) {
+			mode = 5;
 		}
 	}
 
@@ -122,6 +125,9 @@ int main(int argc, char **argv) {
 		break;
 	case 4:
 		deriche_array(width, height);
+		break;
+	case 5:
+		deriche_short(width, height);
 		break;
 	}
 

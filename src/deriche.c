@@ -336,6 +336,7 @@ short qy1av_s[MAX_HEIGHT];
 short qy2av_s[MAX_HEIGHT];
 short qy1ah_s[MAX_WIDTH];
 short qy2ah_s[MAX_WIDTH];
+short qt_s[MAX_WIDTH][MAX_HEIGHT];
 
 void deriche_short(int width, int height) {
 	int i, j;
@@ -362,21 +363,21 @@ L1_2_3:
 		yp1 = 0, yp2 = 0, xp1 = 0, xp2 = 0;
 
 		for (j = 0; j < height; j++) {
-			qy1av[j] = (a1 * (in[i][j] << 7) + a2 * xm1 + b1 * ym1 + b2 * ym2) >> 7;
+			qy1av_s[j] = (a1 * (in[i][j] << 7) + a2 * xm1 + b1 * ym1 + b2 * ym2) >> 7;
 			xm1 = in[i][j] << 7;
 			ym2 = ym1;
-			ym1 = qy1av[j];
+			ym1 = qy1av_s[j];
 
-			qy2av[height - j - 1] = (a3 * xp1 + a1 * xp2 + b1 * yp1 + b2 * yp2) >> 7;
+			qy2av_s[height - j - 1] = (a3 * xp1 + a1 * xp2 + b1 * yp1 + b2 * yp2) >> 7;
 			xp2 = xp1;
 			xp1 = in[i][height - j - 1] << 7;
 			yp2 = yp1;
-			yp1 = qy2av[height - j - 1];
+			yp1 = qy2av_s[height - j - 1];
 
 		}
 
 		for (j = 0; j < height; j++)
-			qt[i][j] = (c1 * (qy1av[j] + qy2av[j])) >> 7;
+			qt_s[i][j] = (c1 * (qy1av_s[j] + qy2av_s[j])) >> 7;
 	}
 L4_5_6:
 	for (j = 0; j < height; j++) {
@@ -384,20 +385,20 @@ L4_5_6:
 		tp1 = 0, tp2 = 0, yp1 = 0, yp2 = 0;
 
 		for (i = 0; i < width; i++) {
-			qy1ah[i] = (a5 * qt[i][j] + a6 * tm1 + b1 * ym1 + b2 * ym2) >> 7;
-			tm1 = qt[i][j];
+			qy1ah_s[i] = (a5 * qt_s[i][j] + a6 * tm1 + b1 * ym1 + b2 * ym2) >> 7;
+			tm1 = qt_s[i][j];
 			ym2 = ym1;
-			ym1 = qy1ah[i];
+			ym1 = qy1ah_s[i];
 
-			qy2ah[width - i - 1] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 7;
+			qy2ah_s[width - i - 1] = (a7 * tp1 + a8 * tp2 + b1 * yp1 + b2 * yp2) >> 7;
 			tp2 = tp1;
-			tp1 = qt[width - i - 1][j];
+			tp1 = qt_s[width - i - 1][j];
 			yp2 = yp1;
-			yp1 = qy2ah[width - i - 1];
+			yp1 = qy2ah_s[width - i - 1];
 		}
 
 		for (i = 0; i < width; i++) {
-			out[i][j] = (c2 * (qy1ah[i] + qy2ah[i])) >> 14;
+			out[i][j] = (c2 * (qy1ah_s[i] + qy2ah_s[i])) >> 14;
 
 			if (out[i][j] > 25)
 				out[i][j] = 0;
